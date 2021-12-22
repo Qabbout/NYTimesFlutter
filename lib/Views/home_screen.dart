@@ -12,9 +12,9 @@ class HomeScreen extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const Text("NY Times Most Popular"),
-          actions: const [
-            IconButton(onPressed: null, icon: Icon(Icons.search)),
-            IconButton(onPressed: null, icon: Icon(Icons.more_vert)),
+          actions: [
+            IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
+            IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
           ],
         ),
         drawer: const Drawer(),
