@@ -9,7 +9,8 @@ class ThemeConstant {
         foregroundColor: Colors.white,
           actionsIconTheme: IconThemeData(
             color: Colors.white,
-          )
-      )
+      ),
+    ),
+    splashColor: Colors.white,
   );
 }
