@@ -11,7 +11,10 @@ class HomeScreen extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text("NY Times Most Popular"),
+          title: const Text(
+            "NY Times Most Popular",
+            overflow: TextOverflow.visible,
+          ),
           actions: [
             IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
             IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
