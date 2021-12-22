@@ -5,5 +5,8 @@ class ThemeConstant {
   static final themData = ThemeData(
     primarySwatch: ColorToMaterialColor.getgetMaterialColorFrom(
         const Color.fromRGBO(55, 224, 187, 1)),
+      appBarTheme: const AppBarTheme(
+        foregroundColor: Colors.white,
+      )
   );
 }
