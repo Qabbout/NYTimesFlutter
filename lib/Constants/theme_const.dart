@@ -7,6 +7,9 @@ class ThemeConstant {
         const Color.fromRGBO(55, 224, 187, 1)),
       appBarTheme: const AppBarTheme(
         foregroundColor: Colors.white,
+          actionsIconTheme: IconThemeData(
+            color: Colors.white,
+          )
       )
   );
 }
