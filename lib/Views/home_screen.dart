@@ -10,7 +10,13 @@ class HomeScreen extends StatelessWidget {
       theme: ThemeConstant.themData,
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: const Text("NY Times Most Popular"),
+          actions: const [
+            IconButton(onPressed: null, icon: Icon(Icons.search)),
+            IconButton(onPressed: null, icon: Icon(Icons.more_vert)),
+          ],
+        ),
         drawer: const Drawer(),
       ),
     );
