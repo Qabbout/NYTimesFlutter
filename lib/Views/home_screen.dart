@@ -9,7 +9,10 @@ class HomeScreen extends StatelessWidget {
     return MaterialApp(
       theme: ThemeConstant.themData,
       debugShowCheckedModeBanner: false,
-      home: const Scaffold(),
+      home: Scaffold(
+        appBar: AppBar(),
+        drawer: const Drawer(),
+      ),
     );
   }
 }
