@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:nyt_articles/Models/most_popular.dart';
 import 'package:nyt_articles/Services/network_service.dart';
 
@@ -16,8 +17,9 @@ class NYTimesAPIService implements APIService {
   static NYTimesAPIService get instance => _instance;
   static var urlSection = "all-sections";
   static var urlPeriod = "7";
+  static var sampleKey = dotenv.env['SAMPLE_KEY'];
   final url =
-      "http://api.nytimes.com/svc/mostpopular/v2/mostviewed/$urlSection/$urlPeriod.json?api-key=sample-key";
+      "http://api.nytimes.com/svc/mostpopular/v2/mostviewed/$urlSection/$urlPeriod.json?api-key=$sampleKey";
 
   @override
   Future<MostPopular> getArticles(String section, String period) async {
