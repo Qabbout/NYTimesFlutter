@@ -15,7 +15,12 @@ class ArticleDetailsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(articleResult.title),
       ),
-      body: const Center(),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(articleResult.resultAbstract),
+        ),
+      ),
     );
   }
 }
