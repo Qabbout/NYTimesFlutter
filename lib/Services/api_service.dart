@@ -29,7 +29,7 @@ class NYTimesAPIService implements APIService {
     try {
       json = await NetworkService.instance.get(url);
     } catch (e) {
-      return Future.error(e);
+      return Future.error(e.toString());
     }
     return MostPopular.fromJson(jsonDecode(json));
   }
