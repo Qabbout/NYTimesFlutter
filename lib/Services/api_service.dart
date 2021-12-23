@@ -5,7 +5,7 @@ import 'package:nyt_articles/Models/most_popular.dart';
 import 'package:nyt_articles/Services/network_service.dart';
 
 abstract class APIService {
-  Future<MostPopular> getArticles(String section, String period);
+  Future<MostPopular> getArticles();
 }
 
 class NYTimesAPIService implements APIService {
@@ -22,9 +22,7 @@ class NYTimesAPIService implements APIService {
       "http://api.nytimes.com/svc/mostpopular/v2/mostviewed/$urlSection/$urlPeriod.json?api-key=$sampleKey";
 
   @override
-  Future<MostPopular> getArticles(String section, String period) async {
-    urlSection = section;
-    urlPeriod = period;
+  Future<MostPopular> getArticles() async {
     final String json;
     try {
       json = await NetworkService.instance.get(url);
