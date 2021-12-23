@@ -4,25 +4,8 @@ import 'package:nyt_articles/Models/most_popular.dart';
 import 'package:nyt_articles/Services/api_service.dart';
 import 'package:nyt_articles/Views/article_details_screen.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  // late final MostPopular? _mostPopular;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   if (_mostPopular == null) {
-  //     NYTimesAPIService.instance.getArticles().then((value) => {
-  //       setState(() {_mostPopular = value;}
-  //     )});
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
