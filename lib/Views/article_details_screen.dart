@@ -5,7 +5,7 @@ class ArticleDetailsScreen extends StatelessWidget {
     Key? key,
     required this.article,
   }) : super(key: key);
-
+  //TODO: change object to article when implemented
   final Object? article;
   static const routeName = '/articleDetailsScreen';
 
