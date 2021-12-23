@@ -37,12 +37,19 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         drawer: const Drawer(),
-        body: FutureBuilder(
-          future: NYTimesAPIService.instance.getArticles(),
-          builder: (BuildContext context, AsyncSnapshot<MostPopular> snapshot) {
-            return snapshot.connectionState != ConnectionState.done
-                ? const Center(child: CircularProgressIndicator())
-                : ListView.builder(
+        body: RefreshIndicator(
+          onRefresh: NYTimesAPIService.instance.getArticles,
+          child: FutureBuilder(
+            future: NYTimesAPIService.instance.getArticles(),
+            builder:
+                (BuildContext context, AsyncSnapshot<MostPopular> snapshot) {
+              if (snapshot.connectionState != ConnectionState.done) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else {
+                if (snapshot.hasData) {
+                  return ListView.builder(
                     itemCount: snapshot.data?.numResults,
                     itemBuilder: (BuildContext context, int index) {
                       return GestureDetector(
@@ -60,6 +67,9 @@ class HomeScreen extends StatelessWidget {
                             bottom: 8.0,
                           ),
                           child: ListTile(
+                            key: Key(
+                              index.toString(),
+                            ),
                             leading: const Padding(
                               padding: EdgeInsets.only(
                                 top: 8.0,
@@ -87,8 +97,7 @@ class HomeScreen extends StatelessWidget {
                                 Positioned(
                                     right: 0,
                                     bottom: 0,
-                                    child: Row(
-                                        children: [
+                                    child: Row(children: [
                                       const Icon(
                                         Icons.calendar_today,
                                         size: 14,
@@ -96,12 +105,12 @@ class HomeScreen extends StatelessWidget {
                                       const SizedBox(
                                         width: 6,
                                       ),
-                                          Text(snapshot.data?.results[index]
-                                                  .publishedDate
+                                      Text(snapshot.data?.results[index]
+                                              .publishedDate
                                               .toIso8601String()
                                               .substring(0, 10) ??
-                                              "Date"),
-                                        ])),
+                                          "Date"),
+                                    ])),
                               ],
                             ),
                             trailing: IconButton(
@@ -113,7 +122,14 @@ class HomeScreen extends StatelessWidget {
                       );
                     },
                   );
-          },
+                } else {
+                  return const Center(
+                    child: Text("Failed to load"),
+                  );
+                }
+              }
+            },
+          ),
         ),
       ),
     );
