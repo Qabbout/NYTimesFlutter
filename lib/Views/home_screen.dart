@@ -14,11 +14,11 @@ class HomeScreen extends StatelessWidget {
       initialRoute: '/',
       onGenerateRoute: (settings) {
         if (settings.name == ArticleDetailsScreen.routeName) {
-          final article = settings.arguments as MostPopular;
+          final articleResult = settings.arguments as Result;
           return MaterialPageRoute(
             builder: (context) {
               return ArticleDetailsScreen(
-                article: article,
+                articleResult: articleResult,
               );
             },
           );

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:nyt_articles/Models/most_popular.dart';
 
 class ArticleDetailsScreen extends StatelessWidget {
   const ArticleDetailsScreen({
     Key? key,
-    required this.article,
+    required this.articleResult,
   }) : super(key: key);
-  //TODO: change object to article when implemented
-  final Object? article;
+  final Result articleResult;
   static const routeName = '/articleDetailsScreen';
 
   @override
