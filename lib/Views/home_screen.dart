@@ -58,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
           future: NYTimesAPIService.instance.getArticles(),
           builder: (BuildContext context, AsyncSnapshot<MostPopular> snapshot) {
             return snapshot.connectionState != ConnectionState.done
-                ? const CircularProgressIndicator()
+                ? const Center(child: CircularProgressIndicator())
                 : ListView.builder(
                     itemCount: snapshot.data?.numResults,
                     itemBuilder: (BuildContext context, int index) {
@@ -105,13 +105,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                     right: 0,
                                     bottom: 0,
                                     child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
                                         children: [
-                                          const Icon(Icons.calendar_today),
+                                      const Icon(
+                                        Icons.calendar_today,
+                                        size: 14,
+                                      ),
+                                      const SizedBox(
+                                        width: 6,
+                                      ),
                                           Text(snapshot.data?.results[index]
                                                   .publishedDate
-                                                  .toIso8601String() ??
+                                              .toIso8601String()
+                                              .substring(0, 10) ??
                                               "Date"),
                                         ])),
                               ],
