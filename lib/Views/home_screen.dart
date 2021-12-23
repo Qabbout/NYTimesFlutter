@@ -1,10 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:nyt_articles/Constants/theme_const.dart';
 import 'package:nyt_articles/Models/most_popular.dart';
+import 'package:nyt_articles/Services/api_service.dart';
 import 'package:nyt_articles/Views/article_details_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  // late final MostPopular? _mostPopular;
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   if (_mostPopular == null) {
+  //     NYTimesAPIService.instance.getArticles().then((value) => {
+  //       setState(() {_mostPopular = value;}
+  //     )});
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -36,56 +54,77 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         drawer: const Drawer(),
-        body: ListView.builder(
-          itemCount: 30,
-          itemBuilder: (BuildContext context, int index) {
-            return GestureDetector(
-              onTap: () async {
-                await Navigator.pushNamed(
-                  context,
-                  ArticleDetailsScreen.routeName,
-                  //TODO: change object to article when implemented
-                  arguments: Object(),
-                );
-              },
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  top: 8.0,
-                  left: 8.0,
-                  bottom: 8.0,
-                ),
-                child: ListTile(
-                  leading: const Padding(
-                    padding: EdgeInsets.only(
-                      top: 8.0,
-                    ),
-                    child: CircleAvatar(
-                      backgroundColor: Colors.grey,
-                    ),
-                  ),
-                  title: Padding(
-                    padding: const EdgeInsets.only(top: 6.0, bottom: 10.0),
-                    child: Text(
-                      "Title",
-                      style: Theme.of(context).textTheme.bodyText1,
-                    ),
-                  ),
-                  subtitle: Stack(
-                    children: const [
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 16.0),
-                        child: Text(
-                            "subtitleeeeeeeeeeeeeeessssseeeeeesseeeeeeeeeeeeeeeeeeeessssss"),
-                      ),
-                      Positioned(right: 0, bottom: 0, child: Text("Date")),
-                    ],
-                  ),
-                  trailing: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.keyboard_arrow_right_rounded)),
-                ),
-              ),
-            );
+        body: FutureBuilder(
+          future: NYTimesAPIService.instance.getArticles(),
+          builder: (BuildContext context, AsyncSnapshot<MostPopular> snapshot) {
+            return snapshot.connectionState != ConnectionState.done
+                ? const CircularProgressIndicator()
+                : ListView.builder(
+                    itemCount: snapshot.data?.numResults,
+                    itemBuilder: (BuildContext context, int index) {
+                      return GestureDetector(
+                        onTap: () async {
+                          await Navigator.pushNamed(
+                            context,
+                            ArticleDetailsScreen.routeName,
+                            arguments: snapshot.data?.results[index],
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            top: 8.0,
+                            left: 8.0,
+                            bottom: 8.0,
+                          ),
+                          child: ListTile(
+                            leading: const Padding(
+                              padding: EdgeInsets.only(
+                                top: 8.0,
+                              ),
+                              child: CircleAvatar(
+                                backgroundColor: Colors.grey,
+                              ),
+                            ),
+                            title: Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 6.0, bottom: 10.0),
+                              child: Text(
+                                snapshot.data?.results[index].title ?? "title",
+                                style: Theme.of(context).textTheme.bodyText1,
+                              ),
+                            ),
+                            subtitle: Stack(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 16.0),
+                                  child: Text(
+                                      snapshot.data?.results[index].byline ??
+                                          "subtitle"),
+                                ),
+                                Positioned(
+                                    right: 0,
+                                    bottom: 0,
+                                    child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          const Icon(Icons.calendar_today),
+                                          Text(snapshot.data?.results[index]
+                                                  .publishedDate
+                                                  .toIso8601String() ??
+                                              "Date"),
+                                        ])),
+                              ],
+                            ),
+                            trailing: IconButton(
+                                onPressed: () {},
+                                icon: const Icon(
+                                    Icons.keyboard_arrow_right_rounded)),
+                          ),
+                        ),
+                      );
+                    },
+                  );
           },
         ),
       ),
