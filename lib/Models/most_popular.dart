@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-class Article {
-  Article({
+class MostPopular {
+  MostPopular({
     required this.status,
     required this.copyright,
     required this.numResults,
@@ -13,11 +13,12 @@ class Article {
   final int numResults;
   final List<Result> results;
 
-  factory Article.fromRawJson(String str) => Article.fromJson(json.decode(str));
+  factory MostPopular.fromRawJson(String str) =>
+      MostPopular.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
-  factory Article.fromJson(Map<String, dynamic> json) => Article(
+  factory MostPopular.fromJson(Map<String, dynamic> json) => MostPopular(
         status: json["status"],
         copyright: json["copyright"],
         numResults: json["num_results"],
