@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nyt_articles/Constants/theme_const.dart';
-import 'package:nyt_articles/Models/article.dart';
+import 'package:nyt_articles/Models/most_popular.dart';
 import 'package:nyt_articles/Views/article_details_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
       initialRoute: '/',
       onGenerateRoute: (settings) {
         if (settings.name == ArticleDetailsScreen.routeName) {
-          final article = settings.arguments as Article;
+          final article = settings.arguments as MostPopular;
           return MaterialPageRoute(
             builder: (context) {
               return ArticleDetailsScreen(
