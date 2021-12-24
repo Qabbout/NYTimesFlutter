@@ -37,9 +37,9 @@ void main() {
           ),
         ),
       );
+      final appBarTitle = find.text(articleResult.resultAbstract);
 
       //act
-      final appBarTitle = find.text(articleResult.resultAbstract);
 
       //assert
       expect(appBarTitle, findsOneWidget);
