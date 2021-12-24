@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nyt_articles/Models/most_popular.dart';
+import 'package:nyt_articles/Models/result.dart';
 
 class ArticleDetailsScreen extends StatelessWidget {
   const ArticleDetailsScreen({

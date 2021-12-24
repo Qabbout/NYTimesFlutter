@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nyt_articles/Constants/theme_const.dart';
 import 'package:nyt_articles/Models/most_popular.dart';
+import 'package:nyt_articles/Models/result.dart';
 import 'package:nyt_articles/Services/api_service.dart';
 import 'package:nyt_articles/Views/article_details_screen.dart';
 
