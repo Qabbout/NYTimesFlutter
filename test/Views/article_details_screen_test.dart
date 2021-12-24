@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:nyt_articles/Models/result.dart';
-import 'package:nyt_articles/Views/article_details_screen.dart';
+import 'package:nyt_articles/Views/ArticleDetailsScreen/article_details_screen.dart';
 
 import '../Fixtures/fixture_reader.dart';
 
