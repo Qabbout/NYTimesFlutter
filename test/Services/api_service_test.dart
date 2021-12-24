@@ -5,24 +5,13 @@ import 'package:nyt_articles/Models/most_popular.dart';
 import 'package:nyt_articles/Models/result.dart';
 import 'package:nyt_articles/Services/api_service.dart';
 
+import '../Fixtures/fixture_reader.dart';
 import 'api_service_test.mocks.dart';
 
 @GenerateMocks([NYTimesAPIService])
 void main() {
   MockNYTimesAPIService mockNYTimesAPIService = MockNYTimesAPIService();
-  var result = Result(
-      adxKeywords: "a",
-      byline: "as",
-      id: 1,
-      nytdsection: "das",
-      publishedDate: DateTime.parse("2020-10-10"),
-      resultAbstract: "abstract",
-      section: "section",
-      title: "title",
-      updated: DateTime.parse("2020-10-11"),
-      uri: "uri",
-      url: "url");
-
+  var result = Result.fromRawJson(fixture('result.json'));
   var tMostPopular = MostPopular(
       copyright: "copyright",
       numResults: 1,
