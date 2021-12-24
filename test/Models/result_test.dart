@@ -19,8 +19,9 @@ void main() {
       uri: "uri",
       url: "url");
 
-  test('should be a subclass of Result Model', () async {
-    expect(tResult, isInstanceOf<Result>());
+  test('should be a subclass of Result Model', () {
+    var result = tResult;
+    expect(result, isInstanceOf<Result>());
   });
   test('should return a valid Result model', () async {
     // arrange

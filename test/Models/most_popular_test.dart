@@ -27,7 +27,8 @@ void main() {
       results: [result]);
 
   test('should be a subclass of MostPopular Model', () async {
-    expect(tMostPopular, isInstanceOf<MostPopular>());
+    var mostPopular = tMostPopular;
+    expect(mostPopular, isInstanceOf<MostPopular>());
   });
   test('should return a valid MostPopular model', () async {
     // arrange
