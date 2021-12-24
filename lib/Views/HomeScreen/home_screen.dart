@@ -39,28 +39,30 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         drawer: const Drawer(),
-        body: RefreshIndicator(
-          onRefresh: NYTimesAPIService.instance.getArticles,
-          child: FutureBuilder(
-            future: NYTimesAPIService.instance.getArticles(),
-            builder:
-                (BuildContext context, AsyncSnapshot<MostPopular> snapshot) {
-              if (snapshot.connectionState != ConnectionState.done) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else {
-                if (snapshot.hasData) {
-                  return MostPopularArticlesListView(
-                    snapshot: snapshot,
+        body: SafeArea(
+          child: RefreshIndicator(
+            onRefresh: NYTimesAPIService.instance.getArticles,
+            child: FutureBuilder(
+              future: NYTimesAPIService.instance.getArticles(),
+              builder:
+                  (BuildContext context, AsyncSnapshot<MostPopular> snapshot) {
+                if (snapshot.connectionState != ConnectionState.done) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
                   );
                 } else {
-                  return const Center(
-                    child: Text("Failed to load"),
-                  );
+                  if (snapshot.hasData) {
+                    return MostPopularArticlesListView(
+                      snapshot: snapshot,
+                    );
+                  } else {
+                    return const Center(
+                      child: Text("Failed to load"),
+                    );
+                  }
                 }
-              }
-            },
+              },
+            ),
           ),
         ),
       ),
