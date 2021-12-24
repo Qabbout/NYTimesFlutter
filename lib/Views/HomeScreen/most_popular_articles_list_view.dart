@@ -12,6 +12,7 @@ class MostPopularArticlesListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      key: const Key("mostPopularArticlesListViewBuilder"),
       itemCount: snapshot.data?.numResults,
       itemBuilder: (BuildContext context, int index) {
         return GestureDetector(
