@@ -8,7 +8,7 @@ import 'package:nyt_articles/Services/api_service.dart';
 import 'api_service_test.mocks.dart';
 
 @GenerateMocks([NYTimesAPIService])
-Future main() async {
+void main() {
   MockNYTimesAPIService mockNYTimesAPIService = MockNYTimesAPIService();
   var result = Result(
       adxKeywords: "a",
