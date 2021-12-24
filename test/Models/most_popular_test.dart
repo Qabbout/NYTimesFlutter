@@ -26,11 +26,11 @@ void main() {
       status: "status",
       results: [result]);
 
-  test('should be a subclass of MostPopular Model', () async {
+  test('should be a subclass of MostPopular Model', () {
     var mostPopular = tMostPopular;
     expect(mostPopular, isInstanceOf<MostPopular>());
   });
-  test('should return a valid MostPopular model', () async {
+  test('should return a valid MostPopular model', () {
     // arrange
     final Map<String, dynamic> jsonMap =
         json.decode(fixture('most_popular.json'));

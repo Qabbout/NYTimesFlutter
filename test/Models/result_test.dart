@@ -23,7 +23,7 @@ void main() {
     var result = tResult;
     expect(result, isInstanceOf<Result>());
   });
-  test('should return a valid Result model', () async {
+  test('should return a valid Result model', () {
     // arrange
     final Map<String, dynamic> jsonMap = json.decode(fixture('result.json'));
 
