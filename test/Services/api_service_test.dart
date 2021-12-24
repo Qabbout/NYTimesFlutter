@@ -38,11 +38,11 @@ Future main() async {
         .thenAnswer((_) async => tMostPopular);
 
     //act
-    tMostPopular = await mockNYTimesAPIService.getArticles();
+    var mostPopular = await mockNYTimesAPIService.getArticles();
 
     //asert
     verify(mockNYTimesAPIService.getArticles());
-    expect(tMostPopular, isInstanceOf<MostPopular>());
+    expect(mostPopular, isInstanceOf<MostPopular>());
     reset(mockNYTimesAPIService);
   });
 
@@ -52,11 +52,11 @@ Future main() async {
         .thenAnswer((_) async => tMostPopular);
 
     //act
-    tMostPopular = await mockNYTimesAPIService.getArticles();
+    var mostPopular = await mockNYTimesAPIService.getArticles();
 
     //asert
     verify(mockNYTimesAPIService.getArticles());
-    expect(tMostPopular, isNotNull);
+    expect(mostPopular, isNotNull);
     reset(mockNYTimesAPIService);
   });
 
@@ -66,11 +66,11 @@ Future main() async {
         .thenAnswer((_) async => tMostPopular);
 
     //act
-    tMostPopular = await mockNYTimesAPIService.getArticles();
+    var mostPopular = await mockNYTimesAPIService.getArticles();
 
     //asert
     verify(mockNYTimesAPIService.getArticles());
-    expect(tMostPopular.numResults, isNonZero);
+    expect(mostPopular.numResults, isNonZero);
     reset(mockNYTimesAPIService);
   });
 }
