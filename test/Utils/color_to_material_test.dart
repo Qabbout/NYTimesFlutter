@@ -12,5 +12,6 @@ void main() {
 
     //assert
     expect(materiaColol, isInstanceOf<MaterialColor>());
+    expect(materiaColol.value, equals(color.value));
   });
 }
