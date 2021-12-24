@@ -26,3 +26,7 @@ or by the running the following command in the root folder:
 ```console
 flutter test test
 ```
+
+<div align="center">
+<!-- <img src="></img> -->
+</div>
