@@ -1,4 +1,3 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -10,7 +9,6 @@ import 'api_service_test.mocks.dart';
 
 @GenerateMocks([NYTimesAPIService])
 Future main() async {
-  TestWidgetsFlutterBinding.ensureInitialized();
   MockNYTimesAPIService mockNYTimesAPIService = MockNYTimesAPIService();
   var result = Result(
       adxKeywords: "a",
@@ -30,7 +28,6 @@ Future main() async {
       numResults: 1,
       status: "status",
       results: [result]);
-  await dotenv.load(fileName: '.env');
 
   test('should return an instance of Most Popular', () async {
     //arange
