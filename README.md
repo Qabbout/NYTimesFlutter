@@ -2,6 +2,11 @@
 
 This is NYT most popular articles flutter app
 
+<div align="center">
+<!-- <img src="></img> -->
+<!-- <img src="></img> -->
+</div>
+
 ## Getting Started
 
 Make sure to create an account at [NYT Developer website](https://developer.nytimes.com/get-started") first, than enable most popular articles service, copy your api key, and create the file: [**.env**]() in the root folder and add the following:
