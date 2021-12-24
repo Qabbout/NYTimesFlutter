@@ -1,16 +1,28 @@
-# nyt_articles
+# NYT_Articles
 
-A new Flutter project.
+This is NYT most popular articles flutter app
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Make sure to create an account at [NYT Developer website](https://developer.nytimes.com/get-started") first, than enable most popular articles service, copy your api key, and create the file: [**.env**]() in the root folder and add the following:
+```console
+SAMPLE_KEY = {put_your_api_here}
+```
+now you can run the app, and to do so exceute the following command in the root folder of the app:
+```console
+flutter run
+```
 
-A few resources to get you started if this is your first Flutter project:
+## Testing
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+You can run the test from vs code ass seen in the picture below:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<div align="center">
+<!-- <img src="></img> -->
+</div>
+
+or by the running the following command in the root folder:
+
+```console
+flutter test test
+```
