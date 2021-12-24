@@ -28,7 +28,7 @@ flutter run
 
 ## Testing
 
-You can run the test from vs code as seen in the picture below:
+You can run the tests from vs code as seen in the picture below:
 
 <div align="center">
 <img src="https://user-images.githubusercontent.com/60781548/147371647-a5e23543-0451-40ca-b403-ee7ca614f125.png">
